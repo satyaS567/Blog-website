@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% load static %}
+  
+  <!--================ Hero sm Banner start =================-->        
+  <section class="mb-30px">
+    <div class="container">
+      <div class="hero-banner hero-banner--sm">
+        <div class="hero-banner__content">
+          <h1>{{category}}</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">{{category}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Blogs-Page</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->      
+  
+
+  <!--================ Start Blog Post Area =================-->
+  <section class="blog-post-area section-margin">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          
+          <div class="row">
+            {% for Blog in blogs %}
+            <div class="col-md-6">
+              <div class="single-recent-blog-post card-view">
+                <div class="thumb">
+                  <img class="card-img rounded-0" src="{{Blog.imageURL}}" alt="" alt=""  style="width: 350px; height: 300px; border: 2px solid rgb(39, 39, 39);">
+                  <ul class="thumb-info">
+                    <li><a href="#"><i class="ti-user"></i>{{Blog.author.name}}</a></li>
+                    <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                  </ul>
+                </div>
+                <div class="details mt-20">
+                  <a href="/blog">
+                    <h3>{{Blog.title}}</h3>
+                  </a>
+                  <p>{{Blog.description|truncatewords:50}}</p>
+                  <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                </div>
+              </div>
+              
+            </div>
+            {% endfor %}
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-12">
+                <nav class="blog-pagination justify-content-center d-flex">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a href="#" class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">
+                                    <i class="ti-angle-left"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item">
+                            <a href="#" class="page-link" aria-label="Next">
+                                <span aria-hidden="true">
+                                    <i class="ti-angle-right"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Blog Post Siddebar -->
+        <div class="col-lg-4 sidebar-widgets">
+            <div class="widget-wrap">
+              <div class="single-sidebar-widget newsletter-widget">
+                <h4 class="single-sidebar-widget__title">Newsletter</h4>
+                <div class="form-group mt-30">
+                  <div class="col-autos">
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'Enter email'">
+                  </div>
+                </div>
+                <button class="bbtns d-block mt-20 w-100">Subcribe</button>
+              </div>
+
+
+              <div class="single-sidebar-widget post-category-widget">
+                <h4 class="single-sidebar-widget__title">Category</h4>
+                <ul class="cat-list mt-20">
+                  {% for Category in categories %}
+                  <li>
+                    <a href="/blog_category/{{Category.name}}" class="d-flex justify-content-between">
+                      <p>{{Category.name}}</p>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              <div class="single-sidebar-widget popular-post-widget">
+                <h4 class="single-sidebar-widget__title">Popular Post</h4>
+                {% for blog in latest_blog %}
+                <div class="popular-post-list">
+                  <div class="single-post-list">
+                    <div class="thumb">
+                      <img class="card-img rounded-0" src="{{blog.imageURL}}" alt="" style="width: 300px; height: 200px; border: 2px solid rgb(39, 39, 39);">
+                      <ul class="thumb-info">
+                        <li><a href="#">{{blog.author.name}}</a></li>
+                        <li><a href="#">{{blog.created_at}}</a></li>
+                      </ul>
+                    </div>
+                    <div class="details mt-20">
+                      <a href="blog-single.html">
+                        <h6>{{blog.title}}</h6>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+                <div class="single-sidebar-widget tag_cloud_widget">
+                  <h4 class="single-sidebar-widget__title">Author</h4>
+                  <ul class="list">
+                    {% for author in authors %}
+                    <li>
+                        <a href="#">{{author.name}}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- End Blog Post Siddebar -->
+      </div>
+  </section>
+  <!--================ End Blog Post Area =================-->
+{% endblock %}

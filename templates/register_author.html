@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% load static %}
+<div class="py-5 container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group my-5">
+            <label for="">Enter your age: </label> <br>
+            <input class="form-control" type="number" name="age" id="">
+        </div>
+        
+        <div class=" mt-5 form-group">
+            <label for="">Enter your Phone number: </label> <br>
+            <input class="form-control" type="number" name="phone" id="">
+        </div>
+        
+        <div class="mt-5 form-group">
+            <label for="">Upload Image: </label> <br>
+            <input class="form-control" type="file" name="image" id="">
+        </div>
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+{% endblock %}

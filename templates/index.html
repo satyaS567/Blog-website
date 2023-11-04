@@ -1,0 +1,154 @@
+
+{% extends 'base.html' %}
+{% block 'content' %}
+{% load static %}
+<main class="site-main">
+  <section class="mb-30px">
+      <div class="container">
+          <div class="hero-banner">
+              <div class="hero-banner__content">
+                  <h3>A blog is only as interesting as the interest shown in others</h3>
+                  <h1>Amazing Places For Blogs</h1>
+                  
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section>
+      <div class="container">
+        
+          <div class="owl-carousel owl-theme blog-slider">
+            {% for Category in categories %}
+              <div class="card blog__slide text-center">
+                  <div class="blog__slide__img">
+                      <img class="card-img rounded-0" src="{{Category.imageURL}}" alt=""  style="width: 300px; height: 200px; border: 2px solid rgb(247, 165, 111);">
+                  </div>
+                  <div class="blog__slide__content">
+                      <a class="blog__slide__label" href="#">{{Category.name}}</a>
+                  </div>
+              </div> 
+              {% endfor %}
+          </div>
+        
+      </div>
+  </section>
+<section class="blog-post-area section-margin mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        {% for blog in latest_blog %}
+        <div class="single-recent-blog-post">
+          <div class="thumb">
+            <img class="img-fluid" src="{{blog.imageURL}}" alt=""  style="width: 800px; height: 500px; border: 2px solid rgb(39, 39, 39);">
+            <ul class="thumb-info">
+              <!-- <li><a href="#"><i class="ti-user"></i>{{Blog.author.name}}</a></li> -->
+              <li><a href="#"><i class="ti-notepad"></i>{{blog.created_at}}</a></li>
+              <li><a href="#"><i class="ti-themify-favicon"></i>Last-Edited:{{blog.edited_at}}</a></li>
+            </ul>
+          </div>
+          <div class="details mt-20">
+            <a href="/blog/{{blog.id}}">
+              <h3>{{blog.title}}</h3>
+            </a>
+            <p class="tag-list-inline">Author: <a href="#">{{blog.author.name}}</a>,
+             
+            <p>{{blog.description|truncatewords:45}}</p>
+            <a class="button" href="/blog/{{blog.id}}">Read More <i class="ti-arrow-right"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="blog-pagination justify-content-center d-flex">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a href="#" class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">
+                      <i class="ti-angle-left"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item">
+                  <a href="#" class="page-link" aria-label="Next">
+                    <span aria-hidden="true">
+                      <i class="ti-angle-right"></i>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 sidebar-widgets">
+        <div class="widget-wrap">
+          <div class="single-sidebar-widget newsletter-widget">
+            <h4 class="single-sidebar-widget__title">Newsletter</h4>
+            <div class="form-group mt-30">
+              <div class="col-autos">
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email"
+                  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+              </div>
+            </div>
+            <button class="bbtns d-block mt-20 w-100">Subcribe</button>
+          </div>
+
+          <div class="single-sidebar-widget post-category-widget">
+            <h4 class="single-sidebar-widget__title">Category</h4>
+            <ul class="cat-list mt-20">
+              {% for Category in categories %}
+              <li>
+                <a href="/" class="d-flex justify-content-between">
+                  <p>{{Category.name}}</p>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          
+
+          <div class="single-sidebar-widget popular-post-widget">
+            <h4 class="single-sidebar-widget__title">Popular Post</h4>
+            <div class="popular-post-list">
+              {% for pblog in popular_post %}
+              <div class="single-post-list">
+                <div class="thumb">
+                  <img class="card-img rounded-0" src="{{pblog.imageURL}}" alt="" style="width: 300px; height: 200px; border: 2px solid rgb(39, 39, 39);">
+                  <ul class="thumb-info">
+                    <li><a href="#">{{pblog.author.name}}</a></li>
+                    <li><a href="#">{{pblog.created_at}}</a></li>
+                  </ul>
+                </div>
+                <div class="details mt-20">
+                  <a href="/blogs">
+                    <h6>{{pblog.title}}</h6>
+                  </a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="single-sidebar-widget tag_cloud_widget">
+            <h4 class="single-sidebar-widget__title">Author</h4>
+                  <ul class="list">
+                    {% for author in authors %}
+                    <li>
+                        <a href="#">{{author.name}}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>{% endblock %}
+

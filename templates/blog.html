@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% load static %}      
+  <section class="mb-30px">
+    <div class="container">
+      <div class="hero-banner hero-banner--sm">
+        <div class="hero-banner__content">
+          <h1>{{blog.category.name}}</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Single</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->    
+
+
+  
+
+  <!--================ Start Blog Post Area =================-->
+  <section class="blog-post-area section-margin">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="single-recent-blog-post">
+            <div class="thumb">
+              <img class="img-fluid" src="{{blog.imageURL}}" alt=""  style="width: 800px; height: 500px; border: 2px solid rgb(39, 39, 39);">
+              <ul class="thumb-info">
+                <!-- <li><a href="#"><i class="ti-user"></i>{{Blog.author.name}}</a></li> -->
+                <li><a href="#"><i class="ti-notepad"></i>{{blog.created_at}}</a></li>
+                <li><a href="#"><i class="ti-themify-favicon"></i>Last-Edited:{{blog.edited_at}}</a></li>
+              </ul>
+            </div>
+            <div class="details mt-20">
+              <a href="/">
+                <h3>{{blog.title}}</h3>
+              </a>
+              <p class="tag-list-inline">Author: <a href="#">{{blog.author.name}}</a>,
+               
+              <p>{{blog.description}}</p>
+             
+            </div>
+          </div>
+
+          <div class="navigation-area">
+                  <div class="row">
+                      <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                          <div class="thumb">
+                              <a href="#"><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt=""></a>
+                          </div>
+                          <div class="arrow">
+                              <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                          </div>
+                          <div class="detials">
+                              <p>Prev Post</p>
+                              <a href="#"><h4>A Discount Toner</h4></a>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                          <div class="detials">
+                              <p>Next Post</p>
+                              <a href="#"><h4>Cartridge Is Better</h4></a>
+                          </div>
+                          <div class="arrow">
+                              <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                          </div>
+                          <div class="thumb">
+                              <a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""></a>
+                          </div>										
+                      </div>									
+                  </div>
+                </div>
+                <div class="comments-area">
+                    <h4>05 Comments</h4>
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="{% static 'img/blog/c1.jpg' %}" alt="">
+                                </div>
+                                <div class="desc">
+                                    <h5><a href="#">Emilly Blunt</a></h5>
+                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+                                    <p class="comment">
+                                        Never say goodbye till the end comes!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="reply-btn">
+                                    <a href="" class="btn-reply text-uppercase">reply</a> 
+                            </div>
+                        </div>
+                    </div>	
+                    <div class="comment-list left-padding">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="{% static 'img/blog/c2.jpg' %}" alt="">
+                                </div>
+                                <div class="desc">
+                                    <h5><a href="#">Elsie Cunningham</a></h5>
+                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+                                    <p class="comment">
+                                        Never say goodbye till the end comes!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="reply-btn">
+                                    <a href="" class="btn-reply text-uppercase">reply</a> 
+                            </div>
+                        </div>
+                    </div>	
+                    
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="{% static 'img/blog/c4.jpg' %}" alt="">
+                                </div>
+                                <div class="desc">
+                                    <h5><a href="#">Maria Luna</a></h5>
+                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+                                    <p class="comment">
+                                        Never say goodbye till the end comes!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="reply-btn">
+                                    <a href="" class="btn-reply text-uppercase">reply</a> 
+                            </div>
+                        </div>
+                    </div>	
+                                                                 				
+                </div>
+                <div class="comment-form">
+                    <h4>Leave a Reply</h4>
+                    <form>
+                        <div class="form-group form-inline">
+                          <div class="form-group col-lg-6 col-md-6 name">
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 email">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                          </div>										
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                        </div>
+                        <a href="#" class="button submit_btn">Post Comment</a>	
+                    </form>
+                </div>
+        </div>
+
+        <!-- Start Blog Post Siddebar -->
+        <div class="col-lg-4 sidebar-widgets">
+            <div class="widget-wrap">
+              <div class="single-sidebar-widget newsletter-widget">
+                <h4 class="single-sidebar-widget__title">Newsletter</h4>
+                <div class="form-group mt-30">
+                  <div class="col-autos">
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'Enter email'">
+                  </div>
+                </div>
+                <button class="bbtns d-block mt-20 w-100">Subcribe</button>
+              </div>
+
+
+              <div class="single-sidebar-widget post-category-widget">
+                <h4 class="single-sidebar-widget__title">Category</h4>
+                <ul class="cat-list mt-20">
+                  {% for category in categories %}
+                  <li>
+                    <a href="#" class="d-flex justify-content-between">
+                      <p>{{category.name}}</p>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              <div class="single-sidebar-widget popular-post-widget">
+                <h4 class="single-sidebar-widget__title">Popular Post</h4>
+                <div class="popular-post-list">
+                  {% for pblog in popular_post %}
+                  <div class="single-post-list">
+                    <div class="thumb">
+                      <img class="card-img rounded-0" src="{{pblog.imageURL}}" alt="" style="width: 300px; height: 200px; border: 2px solid rgb(39, 39, 39);">
+                      <ul class="thumb-info">
+                        <li><a href="#">{{pblog.author.name}}</a></li>
+                        <li><a href="#">{{pblog.created_at}}</a></li>
+                      </ul>
+                    </div>
+                    <div class="details mt-20">
+                      <a href="#">
+                        <h6>{{pblog.title}}</h6>
+                      </a>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+                <div class="single-sidebar-widget tag_cloud_widget">
+                  <h4 class="single-sidebar-widget__title">Author</h4>
+                  <ul class="list">
+                    {% for author in authors %}
+                    <li>
+                        <a href="#">{{author.name}}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- End Blog Post Siddebar -->
+      </div>
+  </section>
+  <!--================ End Blog Post Area =================-->
+{% endblock %}
+  

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% load static %}
+<div class="py-5 container">
+    <div class="row mt-5">
+        <a href="/user_dashboard" class="btn btn-primary">Back</a>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group my-5">
+            <label for="">Enter Title : </label> <br>
+            <input class="form-control" type="text" name="title" id="" value="{{blog.title}}">
+        </div>
+        
+        <div class=" mt-5 form-group">
+            <label for="">Enter Category : </label> <br>
+            <select name="category" id="" class="form-control" value="{{blog.Category.name}}">
+                {% for Category in categories %}
+                <option value="{{Category.name}}">{{Category.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class=" mt-5 form-group">
+            <label for="">Enter Description : </label> <br>
+            <textarea class="form-control" name="description" id="" cols="30" rows="10" value="{{blog.description}}"></textarea>
+        </div>
+        
+        <div class="mt-5 form-group">
+            <label for="">Upload Image : </label> <br>
+            <input class="form-control" type="file" name="image" id="">
+        </div>
+
+        <div class="mt-2 btn btn-outline-primary">
+            <input type="submit" value="Update">
+        </div>
+    </form>
+</div>
+{% endblock %}

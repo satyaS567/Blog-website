@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+{% load static %}
+<div class="container py-5">
+    <div class="row mt-5">
+        <a href="/add_blog" class="btn btn-primary">Add New Blog</a>
+    </div>
+    <table class="table table-hover mt-5">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Written on</th>
+            <th>Last edited on</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for blog in blogs %}
+
+        <tr>
+            <td>
+                <img src="{{ blog.imageURL }}" alt="" width="80px">
+            </td>
+            <td>{{ blog.title }}</td>
+            <td>{{ blog.description|truncatewords:50 }}</td>
+            <td>{{ blog.category }}</td>
+            <td>{{ blog.created_at }}</td>
+            <td>{{ blog.edited_at }}</td>
+            <td>
+                <a href="update_blog/{{blog.id}}" class="btn btn-success">Update</a>
+                <a href="delete_blog/{{blog.id}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
